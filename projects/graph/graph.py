@@ -10,25 +10,68 @@ class Graph:
     def add_vertex(self, vertex):
         """
         Add a vertex to the graph.
+
         """
+        self.vertices[vertex] = set()
         pass  # TODO
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+        else:
+            raise IndexError("Could not find that vertex.")
         pass  # TODO
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+         # TODO
+        #create an empty queue
+      q = Queue()
+      #Create an empty visited set
+      visted = set()
+      #Add the starting vertex to the queue
+      q.enqueue(starting_vertex)
+      #While the queue is not empty
+      while q.size() > 0:
+        #dequeue the first vertex
+        v = q.dequeue()
+        #If it has not been visited:
+        if v not in visited:
+          #mark it as visited (print and add to the visited set)
+          print(v)
+          visited.add(v)
+            #enque each of its neighbors
+          for neighbor in self.vertices[v]:
+            q.enqueue(neighbor)
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # DFT
+        # Create an empty Stack
+        s = Stack()
+        # Create an empty Visited set
+        visited = set()
+        # Push the starting vertex to the stack
+        s.push(starting_vertex)
+        # While the Stack is not empty...
+          while s.size() > 0
+          # Pop the first vertex
+          v = s.pop()
+          # If it has not been visited...
+          if v not in visited:
+            # Mark it as visited (print it and add it to the visited set)
+            print(v)
+            visted.add(v)
+            # Then push each of its neighbors onto the Stack
+            for neighbor in self.vertices[v]:
+              s.push(neighbor)
+        
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
